@@ -1,8 +1,10 @@
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const db = require('../config/database.js');
 const env = require('../config/env.js');
 
 const User = db.users;
+
+const departs = db.depart
 
 // Post a User
 exports.create = (req, res) => {	
@@ -10,25 +12,32 @@ exports.create = (req, res) => {
 	User.create({  
 	  firstname: req.body.firstname,
 	  lastname: req.body.lastname,
-	  email: req.body.lastname,
+	  email: req.body.email,
 	  password: req.body.password,
+	  depart_id: req.body.depart_id
 	}).then(user => {		
-		res.send(user);
-	});
+		res.redirect('/users')
+	  
+	  });
+	
 };
  
 // FETCH all Users
 exports.findAll = (req, res) => {
-	User.findAll().then(users => {	 
+	User.findAll().then(users => {	
 	  res.render('users', {
-		  users : res.body
+		  user : users
 	  });
 	})
 	.catch(err => console.log('error:' + err))
 };
 
-exports.home = (req, res) => {	 
-	  res.render('index');
+exports.home = (req, res) => {	
+	departs.findAll().then(depart => {	
+		res.render('index', {
+			alldeparts : depart
+		});
+	  }) 
 	
 };
 

@@ -14,7 +14,7 @@
           <h1 class="text-primary">Users :</h1>
       </div>
       <div class="text-center">
-          <table class="table">
+          <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
                   <th class="thead-light">
@@ -24,19 +24,28 @@
                     Last name
                 </th>
                 <th class="thead-light">
-                    password
+                   Email
                 </th>
                 <th class="thead-light">
-                    departement
+                   password
                 </th>
               </tr>
             </thead>
             <tbody>
-                <% users.foreach(function(utili) { %>
+              <% user.forEach(function(users) { %>
                 <tr>
                     <td>
-                     <%= utili.password %>
+                     <%= users.firstname %>
                     </td>
+                    <td>
+                      <%= users.lastname %>
+                     </td>
+                     <td>
+                      <%= users.email %>
+                     </td>
+                     <td>
+                      <%= users.password %>
+                     </td>
                 </tr>
                 <% }) %>
             </tbody>

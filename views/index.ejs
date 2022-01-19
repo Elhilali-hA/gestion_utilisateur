@@ -14,11 +14,78 @@
     <div class="m-auto text-center">
         <h1 class="text-primary"> Gestion d'utilisateur </h1>
         <div class="d-flex justify-content-center">
-            <input type="button" class="btn btn-primary" value="add user">
-            <input type="button" class="btn btn-danger" value="add departement">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adduser">
+            Launch demo modal
+          </button>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#add_depart">
+            Launch demo modal
+          </button>
+        </div>
+        <div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="/users" method="post">
+                <div class="d-flex flex-column justify-content-center">
 
+                  <!-- <input type="hidden" class="mt-2" name="id"> -->
+                  <input type="text" class="mt-2" placeholder="firstname" name="firstname">
+                  <input type="text" class="mt-2" placeholder="lastname" name="lastname">
+                  <input type="text" class="mt-2" placeholder="email" name="email">
+                  <select class="custom-select">
+                  <% alldeparts.forEach(function(depart) { %>
+                    <!-- <option selected name="depart_id">departement</option> -->
+                    <option value='<%= depart.id %>''><%= depart.title %></option>
+                    <% }) %>
+                  </select>
+                  <input type="password" class="mt-2" placeholder="password" name="password">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+    
+        <div class="modal fade" id="add_depart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="/depart" method="post">
+              
+                <div class="d-flex flex-column justify-content-center">
+                  <!-- <input type="hidden" class="mt-2" name="id"> -->
+                  <input type="text" class="mt-2" placeholder="title" name="title">
+                  <textarea name="description" class="mt-2" placeholder="description" id="" cols="30" rows="10"></textarea>
+
+                </div> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary" value="Save changes">
+              </div>
+            </form>
+            </div>
+          </div>
         </div>
     </div>
+
+ 
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

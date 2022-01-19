@@ -1,5 +1,5 @@
 const env = {
-    database: 'gestion__users',
+    database: 'gestionusers',
     username: 'root',
     password: "",
     host: 'localhost',

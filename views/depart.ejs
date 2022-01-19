@@ -14,24 +14,38 @@
     <div class="m-auto text-center">
         <h1 class="text-primary">departements :</h1>
     </div>
-    <div>
-        <table>
+    <div class="text-center">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+
             <tr>
-                <th>
-                    id
+                <th class="thead-light">
+                    #
                 </th>
-                <th>
+                <th class="thead-light">
                   Title
               </th>
-              <th>
+              <th class="thead-light">
                   description
               </th>
             </tr>
+          </thead>
+          <tbody>
+            <% depart.forEach(function(departs) { %>
+           
             <tr>
+              <td>
+                
+              </td>
                 <td>
-                    
+                  <%= departs.title %>
+                </td>
+                <td>
+                  <%= departs.description %>
                 </td>
             </tr>
+            <% }) %>
+          </tbody>
             
         </table>
     </div>

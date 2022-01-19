@@ -1,12 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const user = require('../model/user')
-
-// router.get('/', (req,res) => res.send('hellooooo'))
 
 module.exports = function(app) {
  
     const users = require('../controller/user.js');
+    const depart = require('../controller/depart.js');
 
     app.get('/', users.home)
  
@@ -24,9 +22,14 @@ module.exports = function(app) {
  
     // Delete a User with Id
     app.delete('/users/:userId', users.delete);
+
+
+    app.post('/depart', depart.creatdepart);
+
+    app.get('/depart', depart.findepart);
  
 }
 
 
 
-// module.exports = router
+
