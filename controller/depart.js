@@ -31,29 +31,24 @@ exports.findepart = (req, res) => {
 	
 // };
 
-// Find a depart by Id
-exports.findById = (req, res) => {	
-	depart.findById(req.params.departId).then(depart => {
-		res.send(depart);
-	})
-};
- 
-// Update a depart
 exports.update = (req, res) => {
-	const id = req.params.departId;
-	depart.update( { firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email }, 
-		{ where: {id: req.params.departId} }
+	const id = req.body.id;
+	console.log(req.body)
+	depart.update( { ...req.body}, 
+		{ where: {id: id} }
 	).then(() => {
-		res.status(200).send({ message: 'updated successfully a depart with id = ' + id });
+		res.redirect('/depart')
 	});
 };
  
-// Delete a depart by Id
+// Delete a UserUser by Id
 exports.delete = (req, res) => {
-	const id = req.params.departId;
-	depart.destroy({
-	  where: { id: id }
-	}).then(() => {
-	  res.status(200).send({ message: 'deleted successfully a depart with id = ' + id });
+	const id = req.params.userId;
+	depart.destroy( { where: { id: id }
+	}).then(() => {	
+		res.redirect('/depart')
 	});
 };
+ 
+
+ 

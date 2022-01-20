@@ -10,11 +10,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-      <div class="text-center">
+      <div class="p-4 text-center">
           <h1 class="text-primary">Users :</h1>
+          <div class="d-flex justify-content-around">
+            <a href="/"> <-  go to home</a>
+            <a href="/depart">go to department -> </a>
+          </div>
       </div>
-      <div class="text-center">
-          <table class="table table-striped">
+      <div class="col-md-10 m-auto text-center">
+          <table class="mt-3 table table-striped">
             <thead class="thead-dark">
               <tr>
                   <th class="thead-light">
@@ -33,7 +37,10 @@
                  departement
                </th>
                <th class="thead-light">
-                Update / Delete 
+                Update 
+              </th>
+              <th class="thead-light">
+               Delete 
               </th>
               </tr>
             </thead>
@@ -57,7 +64,7 @@
                      </td>
                      
                      <td>
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal<%= users.id %>">
+                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modal<%= users.id %>">
                         update user
                       </button>
                       <div class="modal fade" id="Modal<%= users.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -70,7 +77,7 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                              <form action="/users/:<%=  users.id %>?_method=PATCH" method="post">
+                              <form action="/users/:<%=  users.id %>" method="post">
                                 <div class="d-flex flex-column justify-content-center">
                                   
                                 <input type="hidden" value="<%=  users.id %>" class="mt-2" placeholder="id" name="id">
@@ -96,7 +103,7 @@
                      <td>
                    
 
-                         <a href="/users/<%=users.id %>" class="btn btn-primary">delete user </a>
+                         <a href="/users/<%=users.id %>" class="btn btn-danger">delete user </a>
                        
                      
                      </td>

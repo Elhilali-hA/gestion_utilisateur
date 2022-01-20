@@ -5,22 +5,19 @@ module.exports = function(app) {
  
     const users = require('../controller/user.js');
     const depart = require('../controller/depart.js');
+ 
+   
 
     app.get('/', users.home)
+
+     // users
  
-    // Create a new User
     app.post('/users', users.create);
  
-    // Retrieve all User
     app.get('/users', users.findAll);
- 
-    // Retrieve a single User by Id
-    // app.get('/users/:userId', users.findById);
- 
-    // Update a User with Id
+
     app.post('/users/:userId', users.update);
  
-    // Delete a User with Id
     app.get('/users/:userId', users.delete);
 
 
@@ -31,10 +28,13 @@ module.exports = function(app) {
     // departmet
 
 
-    app.post('/depart', depart.creatdepart);
-    
+    app.post('/depart', depart.creatdepart); 
 
     app.get('/depart', depart.findepart);
+
+    app.post('/depart/:departId', depart.update);
+ 
+    app.get('/depart/:userId', depart.delete);
  
 }
 
