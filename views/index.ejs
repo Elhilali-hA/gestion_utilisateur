@@ -10,15 +10,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+    <style>
+      .image{ 
+       background-image: url("./banner.jpg");
+       /* background-color: black; */
+       width: 100px;
+       height: 200px;
+       background-size: 100px 100px;
+       background-repeat: no-repeat;
+     }
+    </style>
 
-    <div class="m-auto text-center">
+    <div class="m-auto text-center ">
+      <div class="image" ></div>
+      
         <h1 class="text-primary"> Gestion d'utilisateur </h1>
         <div class="d-flex justify-content-center">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adduser">
-            Launch demo modal
+            add user
           </button>
           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#add_depart">
-            Launch demo modal
+            add department
           </button>
         </div>
         <div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

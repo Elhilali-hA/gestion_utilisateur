@@ -29,6 +29,12 @@
                 <th class="thead-light">
                    password
                 </th>
+                <th class="thead-light">
+                 departement
+               </th>
+               <th class="thead-light">
+                Update / Delete 
+              </th>
               </tr>
             </thead>
             <tbody>
@@ -45,6 +51,54 @@
                      </td>
                      <td>
                       <%= users.password %>
+                     </td>
+                     <td>
+                      <%= users.depart_id %>
+                     </td>
+                     
+                     <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal<%= users.id %>">
+                        update user
+                      </button>
+                      <div class="modal fade" id="Modal<%= users.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="/users/:<%=  users.id %>?_method=PATCH" method="post">
+                                <div class="d-flex flex-column justify-content-center">
+                                  
+                                <input type="hidden" value="<%=  users.id %>" class="mt-2" placeholder="id" name="id">
+                                <input type="text" value="<%= users.firstname %>" class="mt-2" placeholder="firstname" name="firstname">
+                                <input type="text" value="<%= users.lastname %>" class="mt-2" placeholder="lastname" name="lastname">
+                                <input type="text" value="<%= users.email %>" class="mt-2" placeholder="email" name="email">
+                                <input type="password" value="<%= users.password %>" class="mt-2" placeholder="password" name="password">
+                                <select class="custom-select">
+                                  <option selected ><%= users.depart_id %></option>    
+                                </select>
+                               
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <input type="submit" class="btn btn-primary" placeholder="Save changes">
+                            </div>
+                          </form>
+                          </div> 
+                        </div>
+                      </div>
+                     </td>
+                     <td>
+                   
+
+                         <a href="/users/<%=users.id %>" class="btn btn-primary">delete user </a>
+                       
+                     
                      </td>
                 </tr>
                 <% }) %>

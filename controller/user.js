@@ -26,11 +26,20 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
 	User.findAll().then(users => {	
 	  res.render('users', {
-		  user : users
+		   user : users
 	  });
 	})
 	.catch(err => console.log('error:' + err))
+	departs.findAll().then(depart => {	
+		res.render('users', {
+			alldeparts : depart
+		});
+	  })
+	  .catch(err => console.log('error:' + err))
 };
+
+
+
 
 exports.home = (req, res) => {	
 	departs.findAll().then(depart => {	
@@ -38,32 +47,34 @@ exports.home = (req, res) => {
 			alldeparts : depart
 		});
 	  }) 
+	  
 	
 };
 
 // Find a User by Id
-exports.findById = (req, res) => {	
-	User.findById(req.params.userId).then(user => {
-		res.send(user);
-	})
-};
+// exports.findById = (req, res) => {	
+// 	User.findById(req.params.userId).then(user => {
+// 		user
+
+// 	})
+// };
  
 // Update a User
 exports.update = (req, res) => {
-	const id = req.params.userId;
-	User.update( { firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email }, 
-		{ where: {id: req.params.userId} }
+	const id = req.body.id;
+	console.log(req.body)
+	User.update( { ...req.body}, 
+		{ where: {id: id} }
 	).then(() => {
-		res.status(200).send({ message: 'updated successfully a user with id = ' + id });
+		res.redirect('/users')
 	});
 };
  
-// Delete a User by Id
+// Delete a UserUser by Id
 exports.delete = (req, res) => {
 	const id = req.params.userId;
-	User.destroy({
-	  where: { id: id }
-	}).then(() => {
-	  res.status(200).send({ message: 'deleted successfully a user with id = ' + id });
+	User.destroy( { where: { id: id }
+	}).then(() => {	
+		res.redirect('/users')
 	});
 };

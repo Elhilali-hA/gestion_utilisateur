@@ -26,10 +26,10 @@ exports.findepart = (req, res) => {
 	.catch(err => console.log('error:' + err))
 };
 
-exports.home = (req, res) => {	 
-	  res.render('index');
+// exports.home = (req, res) => {	 
+// 	  res.render('index');
 	
-};
+// };
 
 // Find a depart by Id
 exports.findById = (req, res) => {	

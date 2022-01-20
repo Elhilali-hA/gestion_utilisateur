@@ -12,7 +12,6 @@ app.use(cors());
 
  
  db.sequelize.sync().then(() => {
- console.log('Drop and Resync with { force: true }');
 });
 
 
@@ -20,7 +19,7 @@ app.set('view engine', 'ejs')
 app.set('views', 'views')
 
 // 
-const PORT = process.env.PORT || 5000
+const PORT = 5001
 
 
 

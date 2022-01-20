@@ -15,16 +15,24 @@ module.exports = function(app) {
     app.get('/users', users.findAll);
  
     // Retrieve a single User by Id
-    app.get('/users/:userId', users.findById);
+    // app.get('/users/:userId', users.findById);
  
     // Update a User with Id
-    app.put('/users/:userId', users.update);
+    app.post('/users/:userId', users.update);
  
     // Delete a User with Id
-    app.delete('/users/:userId', users.delete);
+    app.get('/users/:userId', users.delete);
+
+
+
+
+
+
+    // departmet
 
 
     app.post('/depart', depart.creatdepart);
+    
 
     app.get('/depart', depart.findepart);
  
